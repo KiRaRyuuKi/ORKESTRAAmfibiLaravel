@@ -94,8 +94,8 @@ const scr = ScrollReveal({
      delay: 250,
 })
 
-scr.reveal(".home-img, .footer-logo, .footer-description, .footer-content, .footer-title", { origin: "right" })
-scr.reveal(".home-data", { origin: "bottom" })
-scr.reveal(".about-data, .services-conten", { origin: "left" })
+scr.reveal(".home-img, .footer-logo, .footer-description, .footer-content, .footer-title")
+scr.reveal(".home-content", { origin: "bottom" })
+scr.reveal(".about-content, .services-conten", { origin: "left" })
 scr.reveal(".about-img, .services-img", { origin: "right" })
 scr.reveal(".showroom-card", { interval: 100 })
