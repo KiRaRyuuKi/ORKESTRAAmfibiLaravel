@@ -841,7 +841,7 @@ body.dark-theme {
 
   .home-title {
     font-size: 3rem;
-  }  
+  }
 
   .home-title img {
     width: 60px;
@@ -883,7 +883,7 @@ body.dark-theme {
     column-gap: 1rem;
     justify-content: initial;
   }
-  
+
   .about-title img {
     width: 50%;
   }
