@@ -11,10 +11,11 @@ PayCars (Platform Jual Beli Mobil Bekas Yang Ada Pada Browser)
 ### Tim Pengembang
 <details>
  <summary><strong>Kelompok 3</strong></summary>
-    o- Kapten : KiRa </br>
+    o- = Kapten KiRa = -o</br>
     </br>- = Developer = - </br>
     o- Android : KiRa, Tyo 😄</br>
     o- Website : KiRa, A4nasui 🤔</br>
+    </br>- = Tester = - </br>
     o- Tester  : No2 </br>
 </details>
 
