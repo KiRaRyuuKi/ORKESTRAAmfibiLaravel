@@ -70,12 +70,14 @@
 
                 <li class="menu-item">
                     <a href="../Pengguna/data_pengguna.php" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-user"></i>
                         <div data-i18n="Notifications">Data Pengguna</div>
                     </a>
                 </li>
 
                 <li class="menu-item">
                     <a href="../Data Transaksi/data_transaksi.php" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-money"></i>
                         <div data-i18n="Notifications">Data Transaksi</div>
                     </a>
                 </li>
@@ -85,28 +87,32 @@
                 </li>
 
                 <li class="menu-item">
-                    <a href="../Data Showroom/data_showroom.php" class="menu-link">
-                        <div data-i18n="Notifications">Data Showroom</div>
+                    <a href="../Data Showroom/showroom_mobil.php" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-library"></i>
+                        <div data-i18n="Notifications">Showroom Mobil</div>
                     </a>
                 </li>
 
                 <li class="menu-item">
                     <a href="../Data Mobil/data_mobil.php" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-car"></i>
                         <div data-i18n="Notifications">Data Mobil</div>
                     </a>
                 </li>
 
                 <li class="menu-item">
                     <a href="../Detail Mobil/detail_mobil.php" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-detail"></i>
                         <div data-i18n="Notifications">Detail Mobil</div>
                     </a>
                 </li>
 
                 <li class="menu-item">
                     <a href="../Kategori Mobil/kategori_mobil.php" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-category"></i>
                         <div data-i18n="Notifications">Kategori Mobil</div>
                     </a>
                 </li>
-                
+
             </ul>
         </aside>

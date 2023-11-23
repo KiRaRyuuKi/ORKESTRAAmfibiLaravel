@@ -29,15 +29,13 @@ if (isset($_POST['submit'])) {
     $result = mysqli_query($koneksi, $sql);
 
     if ($result) {
-        header("Location: Data_Pengguna.php?msg=New record created successfully");
+        header("Location: data_pengguna.php?msg=New record created successfully");
     } else {
         echo "Failed: " . mysqli_error($koneksi);
     }
 }
 
 ?>
-
-
 
 <script src="../assets/js/ui-modals.js"></script>
 
@@ -57,7 +55,7 @@ if (isset($_POST['submit'])) {
                     <th>Nama</th>
                     <th>Username</th>
                     <th>Email</th>
-                    <th>Nohp</th>
+                    <th>No Hp</th>
                     <th>Aksi</th>
                     <img src="" alt="">
                 </tr>
@@ -77,7 +75,7 @@ if (isset($_POST['submit'])) {
                                 </button>
                                 <div class="dropdown-menu">
 
-                                    <a class="dropdown-item" href="edit.php?id_pengguna=<?= $data["id_pengguna"] ?>"><i class="bx bx-edit-alt me-2"></i> Edit</a>
+                                    <a class="dropdown-item" href="edit_pengguna.php?id_pengguna=<?= $data["id_pengguna"] ?>"><i class="bx bx-edit-alt me-2"></i> Edit</a>
                                     <a class="dropdown-item" href="delete.php?id_pengguna=<?= $data["id_pengguna"] ?>"><i class="bx bx-trash me-2"></i> Delete</a>
                                 </div>
                             </div>
@@ -90,7 +88,7 @@ if (isset($_POST['submit'])) {
 </div>
 
 
-<!-- Modal detail data -->
+<!-- Modal tambah data -->
 <div class="modal fade" id="tambahdata" tabindex="-1" aria-hidden="true">
     <form action="" method="POST">
         <div class="modal-dialog modal-lg" role="document">
@@ -181,7 +179,7 @@ if (isset($_POST['submit'])) {
         </div>
     </form>
 </div>
-<!--  Modal detail data -->
+<!--  Modal tambah data -->
 
 <?php
 $konten = ob_get_clean();
