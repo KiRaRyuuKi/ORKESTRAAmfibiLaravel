@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers\Pages;
 
+use Illuminate\Routing\Controller;
+
 use Illuminate\Http\Request;
+
 use App\Models\Account;
 
 class AccountController extends Controller
 {
 
-    public function index()
+    public function account()
     {
         $account = Account::orderBy('created_at', 'DESC')->get();
 
-        return view('pages.account.index',compact('account'));
+        return view('pages.account',compact('account'));
     }
 
     public function name($nama)
@@ -27,9 +30,9 @@ class AccountController extends Controller
 
     public function store(Request $request)
     {
-        Account::create($request->all());
+        $account = Account::create($request->all());
 
-        return redirect()->route('pages.account.index')->with('Success', 'Account added successfully.');
+        return redirect()->route('pages.account')->with('Success', 'Account added successfully.');
     }
 
     public function show(string $id)
@@ -52,7 +55,7 @@ class AccountController extends Controller
 
         $account->update($request->all());
 
-        return redirect()->route('pages.account.index')->with('Success', 'Account updated successfully.');
+        return redirect()->route('pages.account')->with('Success', 'Account updated successfully.');
     }
 
     public function destroy(string $id)
@@ -61,6 +64,6 @@ class AccountController extends Controller
 
         $account->delete();
 
-        return redirect()->route('pages.account.index')->with('Success', 'Account deleted successfully.');
+        return redirect()->route('pages.account')->with('Success', 'Account deleted successfully.');
     }
 }

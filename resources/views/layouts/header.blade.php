@@ -1,4 +1,4 @@
-<!-- ======= Header ======= -->
+<!-- Header -->
 <header id="header" class="header fixed-top d-flex align-items-center">
     <div class="d-flex justify-content-between w-100">
         <div class="pagetitle">
@@ -13,8 +13,8 @@
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html"><i class="bi bi-house-door"></i></a></li>
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active">Dashboard</li>
+                    <li class="breadcrumb-item"><a href="index.html">Pages</a></li>
+                    <li class="breadcrumb-item active">Home</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->

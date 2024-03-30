@@ -23,9 +23,6 @@
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
         rel="stylesheet">
 
-    <!-- Template Main CSS File -->
-    <link href="{{ asset('NiceAdmin/assets/css/style.css') }}" rel="stylesheet">
-
     <!-- Vendor CSS Files -->
     <link href="{{ asset('NiceAdmin/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('NiceAdmin/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
@@ -34,6 +31,9 @@
     <link href="{{ asset('NiceAdmin/assets/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
     <link href="{{ asset('NiceAdmin/assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
     <link href="{{ asset('NiceAdmin/assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{{ asset('NiceAdmin/assets/css/style.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
@@ -47,15 +47,65 @@
             @yield('content')
         </main>
 
-        @include('layouts.footer')
+        <!-- Footer -->
+        <footer class="footer py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mb-4 mx-auto text-center">
+                        <a href="#" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                            Company
+                        </a>
+                        <a href="#" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                            About Us
+                        </a>
+                        <a href="#" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                            Team
+                        </a>
+                        <a href="#" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                            Products
+                        </a>
+                        <a href="#" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                            Blog
+                        </a>
+                        <a href="#" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                            Pricing
+                        </a>
+                    </div>
+                    <div class="col-lg-8 mx-auto text-center mb-4 mt-2">
+                        <a href="#" class="text-secondary me-xl-4 me-4">
+                            <span class="text-lg fab fa-dribbble"></span>
+                        </a>
+                        <a href="#" class="text-secondary me-xl-4 me-4">
+                            <span class="text-lg fab fa-twitter"></span>
+                        </a>
+                        <a href="#" class="text-secondary me-xl-4 me-4">
+                            <span class="text-lg fab fa-instagram"></span>
+                        </a>
+                        <a href="#" class="text-secondary me-xl-4 me-4">
+                            <span class="text-lg fab fa-pinterest"></span>
+                        </a>
+                        <a href="#" class="text-secondary me-xl-4 me-4">
+                            <span class="text-lg fab fa-github"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8 mx-auto text-center mt-1">
+                        <p class="mb-0 text-secondary">
+                            Copyright ©
+                            <script>
+                                document.write(new Date().getFullYear())
+                            </script> by ORKESTRA HiERo.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer><!-- End Footer -->
     </div>
 
     <a class="back-to-top d-flex align-items-center justify-content-center" href="#">
         <i class="bi bi-arrow-up-short"></i>
     </a>
-
-    <!-- Template Main JS File -->
-    <script src="{{ asset('NiceAdmin/assets/js/main.js') }}"></script>
 
     <!-- Vendor JS Files -->
     <script src="{{ asset('NiceAdmin/assets/vendor/apexcharts/apexcharts.min.js') }}"></script>
@@ -66,6 +116,9 @@
     <script src="{{ asset('NiceAdmin/assets/vendor/simple-datatables/simple-datatables.js') }}"></script>
     <script src="{{ asset('NiceAdmin/assets/vendor/tinymce/tinymce.min.js') }}"></script>
     <script src="{{ asset('NiceAdmin/assets/vendor/php-email-form/validate.js') }}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{{ asset('NiceAdmin/assets/js/main.js') }}"></script>
 </body>
 
 </html>
