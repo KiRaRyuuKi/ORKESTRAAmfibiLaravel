@@ -1,17 +1,14 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>@yield('title')</title>
 
-    <title>{{ config('app.name', 'Amfibi') }}</title>
-
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta content="" name="description">
+    <meta content="" name="keywords">
 
     <!-- Favicons -->
     <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
@@ -39,12 +36,21 @@
 </head>
 
 <body>
-    <div id="app">
-        <main>
-            @yield('content')
-        </main>
 
-        <!-- Footer -->
+  <main>
+    <div class="container">
+
+      <section class="section error min-vh-100 d-flex flex-column align-items-center justify-content-center">
+        <h1>@yield('code')</h1>
+        <h2 class="text-center">@yield('message')</h2>
+        <a class="btn" href="/home">Back to home</a>
+        <img src="{{ asset('assets/img/not-found.svg') }}" class="img-fluid py-5" alt="@yield('message')">
+      </section>
+
+    </div>
+  </main><!-- End #main -->
+
+  <!-- Footer -->
         <footer class="footer py-5">
             <div class="container">
                 <div class="row">
@@ -98,13 +104,10 @@
                 </div>
             </div>
         </footer><!-- End Footer -->
-    </div>
 
-    <a class="back-to-top d-flex align-items-center justify-content-center" href="#">
-        <i class="bi bi-arrow-up-short"></i>
-    </a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-    <!-- Vendor JS Files -->
+  <!-- Vendor JS Files -->
     <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/echarts/echarts.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/quill/quill.min.js') }}"></script>

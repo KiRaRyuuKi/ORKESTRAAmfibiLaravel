@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\Pages\AccountController;
+use App\Http\Controllers\Pages\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,14 +21,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\Pages\HomeController::class, 'index'])->name('home');
+Route::get('/pages/home', [HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix' => 'account', 'as' => 'account.'], function () {
-    Route::get('/', [AccountController::class, 'account'])->name('account');
-    Route::get('/create', [AccountController::class, 'create'])->name('create');
-    Route::post('/store', [AccountController::class, 'store'])->name('store');
-    Route::get('/{id}', [AccountController::class, 'show'])->name('show');
-    Route::get('/{id}/edit', [AccountController::class, 'edit'])->name('edit');
-    Route::put('/{id}', [AccountController::class, 'update'])->name('update');
-    Route::delete('/{id}', [AccountController::class, 'destroy'])->name('destroy');
-});
+Route::get('/pages/account', [AccountController::class, 'account'])->name('pages.account');
+Route::get('/pages/account/generate', [AccountController::class, 'generate'])->name('pages.account.generate');
+Route::get('/pages/account/create', [AccountController::class, 'create'])->name('pages.account.create');
+Route::post('/pages/account/store', [AccountController::class, 'store'])->name('pages.account.store');
+Route::get('/pages/account/{id}/show', [AccountController::class, 'show'])->name('pages.account.show');
+Route::get('/pages/account/{id}/edit', [AccountController::class, 'edit'])->name('pages.account.edit');
+Route::put('/pages/account/{id}/update', [AccountController::class, 'update'])->name('pages.account.update');
+Route::delete('/pages/account/{id}/destroy', [AccountController::class, 'destroy'])->name('pages.account.destroy');
+
+// Route::group(['prefix' => 'pages', 'as' => 'pages.'], function () {
+// });
+

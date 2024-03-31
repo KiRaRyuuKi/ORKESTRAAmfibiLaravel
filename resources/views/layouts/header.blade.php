@@ -23,7 +23,7 @@
     <nav class="header-nav ms-auto ">
         <ul class="d-flex align-items-center">
 
-            <li class="nav-item pe-3">
+            <li class="nav-item">
                 <i class="bi bi-list toggle-sidebar-btn"></i>
             </li>
 
@@ -114,7 +114,7 @@
 
                     <li class="message-item">
                         <a href="#">
-                            <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
+                            <img src="{{ asset('assets/img/messages-1.jpg') }}" alt="" class="rounded-circle">
                             <div>
                                 <h4>Maria Hudson</h4>
                                 <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
@@ -127,7 +127,7 @@
 
                     <li class="message-item">
                         <a href="#">
-                            <img src="assets/img/messages-2.jpg" alt="" class="rounded-circle">
+                            <img src="{{ asset('assets/img/messages-2.jpg') }}" alt="" class="rounded-circle">
                             <div>
                                 <h4>Anna Nelson</h4>
                                 <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
@@ -140,7 +140,7 @@
 
                     <li class="message-item">
                         <a href="#">
-                            <img src="assets/img/messages-3.jpg" alt="" class="rounded-circle">
+                            <img src="{{ asset('assets/img/messages-3.jpg') }}" alt="" class="rounded-circle">
                             <div>
                                 <h4>David Muldon</h4>
                                 <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
@@ -159,9 +159,9 @@
 
             </li><!-- End Messages Nav -->
 
-            <li class="nav-item dropdown pe-3">
+            <li class="nav-item dropdown">
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                    <img src="{{ asset('NiceAdmin/assets/img/profile-img.jpg') }}" alt="Profile"
+                    <img src="{{ asset('assets/img/profile-img.jpg') }}" alt="Profile"
                         class="rounded-circle">
                 </a><!-- End Profile Iamge Icon -->
 

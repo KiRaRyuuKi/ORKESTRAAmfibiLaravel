@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">Tambah Detail Account</h5>
-            <form form action="{{ route('account.store') }}" method="POST">
+            <form form action="{{ route('pages.account.store') }}" method="POST">
                 @csrf
                 <div class="row mb-3">
                     <div class="col">

@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">Edit Detail Account</h5>
-            <form action="{{ route('account.update', $account->id) }}" method="POST">
+            <form action="{{ route('pages.account.update', $account->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="row">
