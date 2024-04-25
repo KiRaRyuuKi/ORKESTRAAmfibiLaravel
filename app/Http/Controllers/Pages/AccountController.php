@@ -32,16 +32,11 @@ class AccountController extends Controller
     //     return $dataTable->render('pages.index');
     // }
 
-    public function generate()
-    {
-        $pdf = SnappyPDF::loadHTML('<h1>Hello World</h1>');
-
-        return $pdf->download('hello-world.pdf');
-    }
-
     public function account(AccountDataTable $dataTable)
     {
-        return $dataTable->render('pages.account');
+        return $dataTable->render('pages.account', ['autoWidth' => false]);
+
+        // return $dataTable->render('pages.account');
 
         // $account = Account::orderBy('created_at', 'DESC')->get();
 

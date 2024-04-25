@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Pages;
 
+use App\Models\Activity;
 use Illuminate\Routing\Controller;
-
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,6 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('pages.home');
+        $activities = Activity::latest()->limit(5)->get();
+
+        return view('pages.home', compact('activities'));
     }
+
 }

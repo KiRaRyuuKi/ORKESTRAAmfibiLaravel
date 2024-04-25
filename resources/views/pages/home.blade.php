@@ -124,55 +124,29 @@
 
                     <div class="card-body">
                         <h5 class="card-title">Recent Activity <span>| Today</span></h5>
-
                         <div class="activity">
 
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">32 min</div>
-                                <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
-                                <div class="activity-content">
-                                    Quia quae rerum <a href="#" class="fw-bold text-dark">explicabo officiis</a>
-                                    beatae
-                                </div>
-                            </div><!-- End activity item-->
-
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">55 min</div>
-                                <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
-                                <div class="activity-content">
-                                    Voluptatem blanditiis blanditiis eveniet
-                                </div>
-                            </div><!-- End activity item-->
-
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">1 day</div>
-                                <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
-                                <div class="activity-content">
-                                    Tempore autem saepe <a href="#" class="fw-bold text-dark">occaecati
-                                        voluptatem</a>
-                                    tempore
-                                </div>
-                            </div><!-- End activity item-->
-
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">2 days</div>
-                                <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
-                                <div class="activity-content">
-                                    Est sit eum reiciendis exercitationem
-                                </div>
-                            </div><!-- End activity item-->
+                            @foreach ($activities as $activity)
+                                <div class="activity-item d-flex">
+                                    <div class="activite-label pe-3">{{ $activity->created_at->diffForHumans() }}</div>
+                                    <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
+                                    <div class="activity-content">
+                                        {{ $activity->activity }}
+                                    </div>
+                                </div><!-- End activity item-->
+                            @endforeach
 
                         </div>
-
                     </div>
                 </div><!-- End Recent Activity -->
 
                 <div class="card">
-                    <div class="card-body pie-chart">
+                    <div class="card-body">
                         <h5 class="card-title">Pie Chart</h5>
 
                         <!-- Pie Chart -->
-                        <div id="pieChart" style="min-height: 500px;" class="echart"></div>
+                        <div id="pieChart" style="min-height: 575px; margin-bottom: -95px !important;" class="echart">
+                        </div>
 
                         <script>
                             document.addEventListener("DOMContentLoaded", () => {

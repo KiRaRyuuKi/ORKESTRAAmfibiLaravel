@@ -1,43 +1,40 @@
 <!-- Header -->
 <header id="header" class="header fixed-top d-flex align-items-center">
-    <div class="d-flex justify-content-between w-100">
-        <div class="pagetitle">
-            @if (session('status'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('status') }}
-                </div>
-            @endif
+    <div class="pagetitle justify-content-between w-100">
+        @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
 
-            <h1>{{ __('You are logged in!') }}</h1>
+        <h1>{{ __('You are logged in!') }}</h1>
 
-            <nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html"><i class="bi bi-house-door"></i></a></li>
-                    <li class="breadcrumb-item"><a href="index.html">Pages</a></li>
-                    <li class="breadcrumb-item active">Home</li>
-                </ol>
-            </nav>
-        </div><!-- End Page Title -->
-    </div>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html"><i class="bi bi-house-door"></i></a></li>
+                <li class="breadcrumb-item"><a href="index.html">Pages</a></li>
+                <li class="breadcrumb-item active">Home</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
 
     <nav class="header-nav ms-auto ">
         <ul class="d-flex align-items-center">
 
             <li class="nav-item">
-                <i class="bi bi-list toggle-sidebar-btn"></i>
+                <i class="bi bi-layout-sidebar-inset-reverse toggle-sidebar-btn" id="sidebar-icon"></i>
             </li>
 
             <li class="nav-item dropdown">
 
                 <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                    <i class="bi bi-bell"></i>
+                    <i class="bi bi-bell-fill"></i>
                     <span class="badge bg-primary badge-number">4</span>
                 </a><!-- End Notification Icon -->
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
                     <li class="dropdown-header">
                         You have 4 new notifications
-                        <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
                     </li>
                     <li>
                     </li>
@@ -89,9 +86,6 @@
 
                     <li>
                     </li>
-                    <li class="dropdown-footer">
-                        <a href="#">Show all notifications</a>
-                    </li>
 
                 </ul><!-- End Notification Dropdown Items -->
 
@@ -100,14 +94,13 @@
             <li class="nav-item dropdown">
 
                 <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                    <i class="bi bi-chat-left-text"></i>
-                    <span class="badge bg-success badge-number">3</span>
+                    <i class="bi bi-chat-dots-fill"></i>
+                    <span class="badge bg-primary badge-number">3</span>
                 </a><!-- End Messages Icon -->
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
                     <li class="dropdown-header">
                         You have 3 new messages
-                        <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
                     </li>
                     <li>
                     </li>
@@ -152,7 +145,7 @@
                     </li>
 
                     <li class="dropdown-footer">
-                        <a href="#">Show all messages</a>
+                        <a class="rounded-pill" href="#">Show all messages</a>
                     </li>
 
                 </ul><!-- End Messages Dropdown Items -->
@@ -160,9 +153,9 @@
             </li><!-- End Messages Nav -->
 
             <li class="nav-item dropdown">
-                <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                    <img src="{{ asset('assets/img/profile-img.jpg') }}" alt="Profile"
-                        class="rounded-circle">
+                <a class="profile-image nav-link nav-profile d-flex align-items-center pe-0" href="#"
+                    data-bs-toggle="dropdown">
+                    <img src="{{ asset('assets/img/profile-img.jpg') }}" alt="Profile" class="rounded-circle">
                 </a><!-- End Profile Iamge Icon -->
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -174,7 +167,7 @@
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                        <a class="dropdown-item d-flex align-items-center" href="/profile">
                             <i class="bi bi-person"></i>
                             <span>My Profile</span>
                         </a>
@@ -183,7 +176,7 @@
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                        <a class="dropdown-item d-flex align-items-center" href="/profile/setting">
                             <i class="bi bi-gear"></i>
                             <span>Account Settings</span>
                         </a>

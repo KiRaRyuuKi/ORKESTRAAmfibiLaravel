@@ -47,6 +47,14 @@
         })
     }
 
+    const sidebarIcon = document.getElementById('sidebar-icon');
+
+    sidebarIcon.addEventListener('click', function () {
+        sidebarIcon.classList.toggle('bi-layout-sidebar-inset-reverse');
+        sidebarIcon.classList.toggle('bi-layout-sidebar-inset');
+    });
+
+
     /**
      * Search bar toggle
      */

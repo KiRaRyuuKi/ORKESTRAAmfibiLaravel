@@ -34,8 +34,7 @@
 
     <!-- Scripts -->
     @vite([])
-
-    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    {{-- @livewireStyles --}}
 </head>
 
 <body>
@@ -70,19 +69,19 @@
                     </div>
                     <div class="col-lg-8 mx-auto text-center mb-4 mt-2">
                         <a href="#" class="text-secondary me-xl-4 me-4">
-                            <span class="text-lg fab fa-dribbble"></span>
+                            <span class="text-lg bi bi-dribbble"></span>
                         </a>
                         <a href="#" class="text-secondary me-xl-4 me-4">
-                            <span class="text-lg fab fa-twitter"></span>
+                            <span class="text-lg bi bi-twitter"></span>
                         </a>
                         <a href="#" class="text-secondary me-xl-4 me-4">
-                            <span class="text-lg fab fa-instagram"></span>
+                            <span class="text-lg bi bi-instagram"></span>
                         </a>
                         <a href="#" class="text-secondary me-xl-4 me-4">
-                            <span class="text-lg fab fa-pinterest"></span>
+                            <span class="text-lg bi bi-pinterest"></span>
                         </a>
                         <a href="#" class="text-secondary me-xl-4 me-4">
-                            <span class="text-lg fab fa-github"></span>
+                            <span class="text-lg bi bi-github"></span>
                         </a>
                     </div>
                 </div>
@@ -112,6 +111,8 @@
 
     <!-- Template Main JS File -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
+
+    {{-- @livewireScripts --}}
 </body>
 
 </html>

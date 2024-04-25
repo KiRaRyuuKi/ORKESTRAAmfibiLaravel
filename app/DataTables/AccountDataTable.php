@@ -25,12 +25,12 @@ class AccountDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->addColumn('action', function($row) {
                 $action =
-                    '<a href="' . url('pages/account/' .$row->id. '/show') . '" type="button" class="btn btn-primary">Detail</a>
-                     <a href="' . url('pages/account/' .$row->id. '/edit') . '" type="button" class="btn btn-primary">Edit</a>
+                    '<a href="' . url('pages/account/' .$row->id. '/show') . '" type="button" class="btn btn-primary"><i class="bi bi-card-text"></i></a>
+                     <a href="' . url('pages/account/' .$row->id. '/edit') . '" type="button" class="btn btn-primary"><i class="bi bi-pencil"></i></a>
                      <form action="' . url('pages/account/' .$row->id. '/destroy') . '" method="POST" class="btn btn-dark p-0" onsubmit="return confirm(\'Delete?\')">
                         ' . csrf_field() . '
                         ' . method_field("DELETE") . '
-                        <button class="btn btn-dark m-0">Delete <i class="fa fa-trash"></i></button>
+                        <button class="btn btn-dark m-0"><i class="bi bi-trash"></i></button>
                      </form>';
 
                 return $action;
@@ -52,6 +52,7 @@ class AccountDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
+                    -> autoWidth (false)
                     ->setTableId('account-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
@@ -64,7 +65,7 @@ class AccountDataTable extends DataTable
                         Button::make('pdf'),
                         Button::make('print'),
                         Button::make('reset'),
-                        Button::make('reload')
+                        Button::make('reload'),
                     ]);
     }
 

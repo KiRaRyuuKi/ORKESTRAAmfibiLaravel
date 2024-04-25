@@ -31,83 +31,85 @@
 
     <!-- Scripts -->
     @vite([])
+    @livewireStyles
 
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
-  <main>
-    <div class="container">
+    <main>
+        <div class="container">
 
-      <section class="section error min-vh-100 d-flex flex-column align-items-center justify-content-center">
-        <h1>@yield('code')</h1>
-        <h2 class="text-center">@yield('message')</h2>
-        <a class="btn" href="/home">Back to home</a>
-        <img src="{{ asset('assets/img/not-found.svg') }}" class="img-fluid py-5" alt="@yield('message')">
-      </section>
+            <section class="section error min-vh-100 d-flex flex-column align-items-center justify-content-center">
+                <h1>@yield('code')</h1>
+                <h2 class="text-center">@yield('message')</h2>
+                <a class="btn" href="/pages/home">Back to home</a>
+                <img src="{{ asset('assets/img/not-found.svg') }}" class="img-fluid py-5" alt="@yield('message')">
+            </section>
 
-    </div>
-  </main><!-- End #main -->
+        </div>
+    </main><!-- End #main -->
 
-  <!-- Footer -->
-        <footer class="footer py-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 mb-4 mx-auto text-center">
-                        <a href="#" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-                            Company
-                        </a>
-                        <a href="#" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-                            About Us
-                        </a>
-                        <a href="#" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-                            Team
-                        </a>
-                        <a href="#" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-                            Products
-                        </a>
-                        <a href="#" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-                            Blog
-                        </a>
-                        <a href="#" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-                            Pricing
-                        </a>
-                    </div>
-                    <div class="col-lg-8 mx-auto text-center mb-4 mt-2">
-                        <a href="#" class="text-secondary me-xl-4 me-4">
-                            <span class="text-lg fab fa-dribbble"></span>
-                        </a>
-                        <a href="#" class="text-secondary me-xl-4 me-4">
-                            <span class="text-lg fab fa-twitter"></span>
-                        </a>
-                        <a href="#" class="text-secondary me-xl-4 me-4">
-                            <span class="text-lg fab fa-instagram"></span>
-                        </a>
-                        <a href="#" class="text-secondary me-xl-4 me-4">
-                            <span class="text-lg fab fa-pinterest"></span>
-                        </a>
-                        <a href="#" class="text-secondary me-xl-4 me-4">
-                            <span class="text-lg fab fa-github"></span>
-                        </a>
-                    </div>
+    <!-- Footer -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mb-4 mx-auto text-center">
+                    <a href="#" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                        Company
+                    </a>
+                    <a href="#" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                        About Us
+                    </a>
+                    <a href="#" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                        Team
+                    </a>
+                    <a href="#" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                        Products
+                    </a>
+                    <a href="#" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                        Blog
+                    </a>
+                    <a href="#" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                        Pricing
+                    </a>
                 </div>
-                <div class="row">
-                    <div class="col-8 mx-auto text-center mt-1">
-                        <p class="mb-0 text-secondary">
-                            Copyright ©
-                            <script>
-                                document.write(new Date().getFullYear())
-                            </script> by ORKESTRA HiERo.
-                        </p>
-                    </div>
+                <div class="col-lg-8 mx-auto text-center mb-4 mt-2">
+                    <a href="#" class="text-secondary me-xl-4 me-4">
+                        <span class="text-lg fab fa-dribbble"></span>
+                    </a>
+                    <a href="#" class="text-secondary me-xl-4 me-4">
+                        <span class="text-lg fab fa-twitter"></span>
+                    </a>
+                    <a href="#" class="text-secondary me-xl-4 me-4">
+                        <span class="text-lg fab fa-instagram"></span>
+                    </a>
+                    <a href="#" class="text-secondary me-xl-4 me-4">
+                        <span class="text-lg fab fa-pinterest"></span>
+                    </a>
+                    <a href="#" class="text-secondary me-xl-4 me-4">
+                        <span class="text-lg fab fa-github"></span>
+                    </a>
                 </div>
             </div>
-        </footer><!-- End Footer -->
+            <div class="row">
+                <div class="col-8 mx-auto text-center mt-1">
+                    <p class="mb-0 text-secondary">
+                        Copyright ©
+                        <script>
+                            document.write(new Date().getFullYear())
+                        </script> by ORKESTRA HiERo.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
+    <!-- Vendor JS Files -->
     <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/echarts/echarts.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/quill/quill.min.js') }}"></script>
@@ -115,6 +117,8 @@
 
     <!-- Template Main JS File -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
+
+    @livewireScripts
 </body>
 
 </html>
