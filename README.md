@@ -1,7 +1,5 @@
 
-## Laravel Livewire Chat Course Demo App
-
-![./cover.jpeg](/cover.jpeg)
+## Laravel Amfibi App
 
 
 
