@@ -19,8 +19,14 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
+        'phone',
+        'ktp',
+        'kk',
+        'address',
+        'profile_photo',
     ];
 
     /**
@@ -42,4 +48,38 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function showrooms()
+    {
+        return $this->hasMany(Showroom::class);
+    }
+
+    public function addresses()
+    {
+        return $this->hasMany(Address::class);
+    }
+
+    public function rentals()
+    {
+        return $this->hasMany(RentalCar::class);
+    }
+
+    public function sales()
+    {
+        return $this->hasMany(SaleCar::class);
+    }
+
+    public function conversations()
+    {
+        return $this->hasMany(Conversation::class,'sender_id')->orWhere('receiver_id',$this->id)->whereNotDeleted();
+    }
+
+    /**
+     * The channels the user receives notification broadcasts on.
+     */
+    public function receivesBroadcastNotificationsOn(): string
+    {
+        return 'users.'.$this->id;
+    }
+
 }

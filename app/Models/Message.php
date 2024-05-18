@@ -19,17 +19,13 @@ class Message extends Model
         'sender_deleted_at',
     ];
 
-
     protected $dates=['read_at','receiver_deleted_at','sender_deleted_at'];
 
-
-    /* relationship */
-
+    #relationship
     public function conversation()
     {
         return $this->belongsTo(Conversation::class);
     }
-
 
     public function isRead():bool
     {

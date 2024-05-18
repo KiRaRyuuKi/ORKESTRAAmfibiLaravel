@@ -33,19 +33,15 @@ class MessageRead extends Notification implements ShouldBroadcast
         return ['broadcast'];
     }
 
-
-        /**
+    /**
      * Get the broadcastable representation of the notification.
      */
     public function toBroadcast(object $notifiable): BroadcastMessage
     {
         return new BroadcastMessage([
-
             'conversation_id' => $this->conversation_id,
-      
         ]);
     }
-
 
     /**
      * Get the mail representation of the notification.

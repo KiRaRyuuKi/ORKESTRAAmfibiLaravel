@@ -1,20 +1,27 @@
-<div class="container my-5">
-    <h5 class="text-center display-2 fw-bold py-3">Users</h5>
+<div class="max-w-6xl mx-auto my-16">
+    <h5 class="text-center text-5xl font-bold py-3">Users</h5>
 
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 p-2 ">
         @foreach ($users as $key => $user)
-            <div class="col">
-                <div class="card border rounded shadow">
+            {{-- child --}}
+            <div class="w-full bg-white border border-gray-200 rounded-lg p-5 shadow">
+                <div class="flex flex-col items-center pb-10">
                     <img src="https://source.unsplash.com/500x500?face-{{ $key }}" alt="image"
-                        class="card-img-top w-50 mx-auto mt-4 rounded-circle">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">{{ $user->name }}</h5>
-                        <p class="card-text text-center">{{ $user->email }}</p>
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-secondary" type="button">Add Friend</button>
-                            <button class="btn btn-primary" type="button"
-                                wire:click="message({{ $user->id }})">Message</button>
-                        </div>
+                        class="w-24 h-24 mb-2 5 rounded-full shadow-lg">
+
+                    <h5 class="mb-1 text-xl font-medium text-gray-900 ">
+                        {{ $user->name }}
+                    </h5>
+
+                    <span class="text-sm text-gray-500">{{ $user->email }} </span>
+
+                    <div class="flex mt-4 space-x-3 md:mt-6">
+                        <x-secondary-button>
+                            Add Friend
+                        </x-secondary-button>
+                        <x-primary-button wire:click="message({{ $user->id }})">
+                            Message
+                        </x-primary-button>
                     </div>
                 </div>
             </div>

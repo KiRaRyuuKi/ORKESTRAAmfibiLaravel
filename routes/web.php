@@ -1,12 +1,12 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Pages\AccountController;
-use App\Http\Controllers\Pages\HomeController;
-use App\Http\Livewire\Messages\Messages;
-use App\Http\Livewire\Messages\Index;
+use App\Http\Controllers\BrandCategoryController;
+use App\Http\Controllers\CarController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Livewire\Chat\Chat;
+use App\Http\Livewire\Chat\Context;
 use App\Http\Livewire\Users;
-use App\Http\Livewire\Counter;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,33 +23,62 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/profile', function () {
-    return view('profile');
+Route::get('/home', function () {
+    return view('welcome');
 });
 
-Route::get('/profile/setting', function () {
-    return view('setting');
+Route::get('/market', function () {
+    return view('market');
 });
 
-Auth::routes();
+Route::get('/rent', function () {
+    return view('rent');
+});
 
-Route::get('/pages/home', [HomeController::class, 'index'])->name('home');
+Route::get('/buy', function () {
+    return view('buy');
+});
 
-Route::get('/pages/account', [AccountController::class, 'account'])->name('pages.account');
-Route::get('/pages/account/create', [AccountController::class, 'create'])->name('pages.account.create');
-Route::post('/pages/account/store', [AccountController::class, 'store'])->name('pages.account.store');
-Route::get('/pages/account/{id}/show', [AccountController::class, 'show'])->name('pages.account.show');
-Route::get('/pages/account/{id}/edit', [AccountController::class, 'edit'])->name('pages.account.edit');
-Route::put('/pages/account/{id}/update', [AccountController::class, 'update'])->name('pages.account.update');
-Route::delete('/pages/account/{id}/destroy', [AccountController::class, 'destroy'])->name('pages.account.destroy');
+Route::get('/payment', function () {
+    return view('payment');
+});
 
-// Route::group(['prefix' => 'pages', 'as' => 'pages.'], function () {
-// });
+require __DIR__.'/auth.php';
 
-// Route::get('/counter', Counter::class)->name('counter');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
-// Route::middleware('auth')->group(function (){
-//     Route::get('/messages', Index::class)->name('messages.index');
-//     Route::get('/messages/{query}', [Messages::class, 'messages'])->name('messages');
-//     Route::get('/users', [Users::class, 'messages'])->name('users');
-// });
+Route::middleware('auth')->group(function (){
+    Route::get('/chat', Context::class)->name('chat.context');
+    Route::get('/{query}/chat', Chat::class)->name('chat');
+    Route::get('/users', Users::class)->name('users');
+});
+
+Route::middleware(['auth', 'verified'])->prefix('administrator')->group(function () {
+    Route::view('/dashboard', 'administrator.dashboard')->name('dashboard');
+
+    Route::prefix('data-mobil')->group(function () {
+        Route::get('/merek-&-kategori', [BrandCategoryController::class, 'index']);
+        Route::get('/list', [CarController::class, 'index']);
+    });
+
+    Route::prefix('sewa-mobil')->group(function () {
+        Route::view('/data-sewa', 'administrator.sewa_mobil.data-sewa');
+        Route::view('/denda', 'administrator.sewa_mobil.denda');
+        Route::view('/pengembalian', 'administrator.sewa_mobil.pengembalian');
+    });
+
+    Route::prefix('penjualan')->group(function () {
+        Route::view('/data-penjualan', 'administrator.penjualan.data-penjualan');
+        Route::view('/pengembalian', 'administrator.penjualan.pengembalian');
+    });
+
+    Route::view('/laporan', 'administrator.laporan');
+
+    Route::view('/help', 'administrator.help');
+    Route::view('/pengaturan', 'administrator.pengaturan');
+    Route::view('/feedback', 'administrator.feedback');
+});

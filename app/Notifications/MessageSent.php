@@ -29,14 +29,10 @@ class MessageSent extends Notification implements ShouldBroadcast
 
     )
     {
-        //
-
         $this->user= $user;
         $this->message= $message;
         $this->conversation= $conversation;
         $this->receiverId= $receiverId;
-
-
     }
 
     /**
@@ -60,7 +56,6 @@ class MessageSent extends Notification implements ShouldBroadcast
                     ->line('Thank you for using our application!');
     }
 
-
     /**
      * Get the broadcastable representation of the notification.
      */
@@ -69,11 +64,10 @@ class MessageSent extends Notification implements ShouldBroadcast
         return new BroadcastMessage([
             'user_id' => $this->user->id,
             'conversation_id' => $this->conversation->id,
-            'message_id' => $this->message->id,   
+            'message_id' => $this->message->id,
             'receiver_id' => $this->receiverId,
         ]);
     }
-
 
     /**
      * Get the array representation of the notification.
