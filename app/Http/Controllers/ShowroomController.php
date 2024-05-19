@@ -8,29 +8,47 @@ use Illuminate\Http\Request;
 
 class ShowroomController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $showrooms = Showroom::with('user', 'cars')->get();
-        return response()->json($showrooms);
+        $user = $request->user();
+        $showrooms = Showroom::where('user_id', $user->id)->get();
+
+        return view('administrator.pengaturan', ['showrooms' => $showrooms]);
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'name' => 'string|max:255',
+            'phone' => 'string|max:255',
+            'banner' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'profile_photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'about' => 'string|max:255',
+            'address' => 'string|max:255',
+        ]);
+
+        $showroom = Showroom::findOrFail($id);
+
+        if ($request->hasFile('banner')) {
+            $bannerPath = $request->file('banner')->store('banners', 'public');
+            $validatedData['banner'] = '/storage/' . $bannerPath;
+        }
+
+        if ($request->hasFile('profile_photo')) {
+            $profilePath = $request->file('profile_photo')->store('profile_photos', 'public');
+            $validatedData['profile_photo'] = '/storage/' . $profilePath;
+        }
+
+        $showroom->update($validatedData);
+
+        return redirect()->route('administrator.pengaturan.index')->with('success', 'Showroom updated successfully!');
     }
 
     public function store(ShowroomRequest $request)
     {
         $showroom = Showroom::create($request->validated());
         return response()->json($showroom, 201);
-    }
-
-    public function show($id)
-    {
-        $showroom = Showroom::with('user', 'cars')->findOrFail($id);
-        return response()->json($showroom);
-    }
-
-    public function update(ShowroomRequest $request, $id)
-    {
-        $showroom = Showroom::findOrFail($id);
-        $showroom->update($request->validated());
-        return response()->json($showroom);
     }
 
     public function destroy($id)

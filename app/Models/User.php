@@ -49,9 +49,9 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function showrooms()
+    public function showroom()
     {
-        return $this->hasMany(Showroom::class);
+        return $this->hasOne(Showroom::class);
     }
 
     public function addresses()

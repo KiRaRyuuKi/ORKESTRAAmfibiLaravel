@@ -3,6 +3,7 @@
 use App\Http\Controllers\BrandCategoryController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ShowroomController;
 use App\Http\Livewire\Chat\Chat;
 use App\Http\Livewire\Chat\Context;
 use App\Http\Livewire\Users;
@@ -79,6 +80,9 @@ Route::middleware(['auth', 'verified'])->prefix('administrator')->group(function
     Route::view('/laporan', 'administrator.laporan');
 
     Route::view('/help', 'administrator.help');
-    Route::view('/pengaturan', 'administrator.pengaturan');
+
+    Route::get('/pengaturan', [ShowroomController::class, 'index'])->name('administrator.pengaturan.index');
+    Route::put('/pengaturan/{id}/update', [ShowroomController::class, 'update'])->name('administrator.pengaturan.update');
+
     Route::view('/feedback', 'administrator.feedback');
 });
