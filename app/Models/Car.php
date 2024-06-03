@@ -13,25 +13,22 @@ class Car extends Model
         'showroom_id',
         'brand_id',
         'category_id',
+        'name',
         'year',
-        'fuel_type',
         'transmission',
-        'price',
+        'fuel_type',
         'status',
         'color',
-        'description',
         'capacity',
         'license_plate',
-        'image1',
-        'image2',
-        'image3',
-        'image4',
-        'image5',
+        'price',
+        'image_1',
+        'image_2',
+        'image_3',
+        'image_4',
+        'image_5',
+        'description',
         'accessories',
-    ];
-
-    protected $casts = [
-        'accessories' => 'array',
     ];
 
     public function showroom()
@@ -49,13 +46,8 @@ class Car extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function rentals()
+    public function payments()
     {
-        return $this->hasMany(RentalCar::class);
-    }
-
-    public function sales()
-    {
-        return $this->hasMany(SaleCar::class);
+        return $this->hasMany(Payment::class);
     }
 }

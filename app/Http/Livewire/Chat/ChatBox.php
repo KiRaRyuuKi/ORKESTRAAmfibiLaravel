@@ -36,14 +36,11 @@ class ChatBox extends Component
                 $this->dispatchBrowserEvent('scroll-bottom');
                 $newMessage = Message::find($event['message_id']);
 
-                #push message
                 $this->loadedMessages->push($newMessage);
 
-                #mark as read
                 $newMessage->read_at = now();
                 $newMessage->save();
 
-                #broadcast
                 $this->selectedConversation->getReceiver()
                     ->notify(new MessageRead($this->selectedConversation->id));
             }
@@ -52,13 +49,10 @@ class ChatBox extends Component
 
     public function loadMore(): void
     {
-        #increment
         $this->paginate_var += 10;
 
-        #call loadMessages()
         $this->loadMessages();
 
-        #update the chat height
         $this->dispatchBrowserEvent('update-chat-height');
     }
 
@@ -66,7 +60,6 @@ class ChatBox extends Component
     {
         $userId = auth()->id();
 
-        #get count
         $count = Message::where('conversation_id', $this->selectedConversation->id)
                         ->where(function ($query) use ($userId) {
                             $query->where('sender_id', $userId)
@@ -77,7 +70,6 @@ class ChatBox extends Component
                         })
                         ->count();
 
-        #skip and query
         $this->loadedMessages = Message::where('conversation_id', $this->selectedConversation->id)
                                         ->where(function ($query) use ($userId) {
                                             $query->where('sender_id', $userId)
@@ -106,20 +98,15 @@ class ChatBox extends Component
 
         $this->reset('body');
 
-        #scroll to bottom
         $this->dispatchBrowserEvent('scroll-bottom');
 
-        #push the message
         $this->loadedMessages->push($createdMessage);
 
-        #update conversation model
         $this->selectedConversation->updated_at = now();
         $this->selectedConversation->save();
 
-        #refresh chatlist
         $this->emitTo('chat.chat-list', 'refresh');
 
-        #broadcast
         $this->selectedConversation->getReceiver()
             ->notify(new MessageSent(
                 Auth()->User(),

@@ -1,6 +1,6 @@
 <x-app-layout>
-    <section class="bg-white dark:bg-gray-900">
-        <div class="pt-4 px-4 mx-auto">
+    <section class="bg-white p-5 rounded-xl dark:bg-gray-900">
+        <div class="p-6">
             <h2 class="mb-4 text-3xl tracking-tight font-extrabold text-gray-900 dark:text-white">
                 Give Feedback
             </h2>

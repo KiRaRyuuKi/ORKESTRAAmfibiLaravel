@@ -20,12 +20,10 @@
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-        <main>
-            {{ $slot }}
-        </main>
-    </div>
+<body id="app" class="font-sans antialiased bg-gray-50 dark:bg-gray-500">
+
+    {{ $slot }}
+
     @livewireScripts
 </body>
 

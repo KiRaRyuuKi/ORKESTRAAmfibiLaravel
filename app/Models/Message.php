@@ -21,7 +21,6 @@ class Message extends Model
 
     protected $dates=['read_at','receiver_deleted_at','sender_deleted_at'];
 
-    #relationship
     public function conversation()
     {
         return $this->belongsTo(Conversation::class);

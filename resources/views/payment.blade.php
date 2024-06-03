@@ -1,38 +1,80 @@
 <x-main-layout>
-    <section
-        class="bg-white py-8 w-screen p-12 rounded-3xl leading-6 shadow-md ring-1 ring-gray-900/5 dark:bg-gray-900 antialiased">
-        <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
+    <section class="bg-white py-12 w-screen leading-6">
+        <div class="mx-auto max-w-screen-xl px-4 mb-12 2xl:px-0">
             <div class="mx-auto max-w-5xl">
-                <h2 class="flex justify-center py-3 text-2xl font-semibold text-gray-900 dark:text-white">
-                    Payment
-                </h2>
+                <div class="flex gap-3 p-3 mb-8 bg-blue-100 text-blue-800 drop-shadow rounded-xl">
+                    <div
+                        class="aspect-h-1 aspect-w-1 w-44 overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                        <img src="{{ $car->image_1 }}" alt=""
+                            class="h-28 w-full object-cover object-center group-hover:opacity-75">
+                    </div>
+                    <div class="w-full">
+                        <h3 class="text-md font-semibold mb-2">
+                            {{ $car->brand->name }},
+                            {{ $car->name }}
+                            ({{ $car->year }})
+                        </h3>
+                        <div class="text-xs flex">
+                            <p class="w-12">Lokasi</p>:
+                            <p class="flex-1 ms-1 max-w-xs"> {{ $car->showroom->address }}</p>
+                        </div>
+                        <div class="text-xs flex">
+                            <p class="w-12">Pickup</p>:
+                            <p id="payment-page-content" class="flex-1 ms-1"> </p>
+                        </div>
+                        <div class="text-xs flex">
+                            <p class="w-12">Harga</p>:
+                            <p class="flex-1 ms-1"> ${{ $car->price }}</p>
+                        </div>
+                        @if ($car->status == 'Disewakan')
+                            <div class="text-xs flex">
+                                <p class="w-12">Tanggal</p>:
+                                <p id="payment-page-date" class="flex-1 ms-1"></p>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+                <div class="lg:flex lg:items-start lg:gap-8">
 
-                <div class="mt-6 sm:mt-8 lg:flex lg:items-start lg:gap-12">
-                    <form action="#"
-                        class="w-full rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6 lg:max-w-xl lg:p-8">
+                    <form action="{{ route('payment.store') }}" method="POST"
+                        class="w-full rounded-xl drop-shadow bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6 lg:max-w-xl lg:p-8">
+                        @csrf
+
+                        <input type="hidden" name="user_id" value="{{ $user->id }}">
+                        <input type="hidden" name="showroom_id" value="{{ $car->showroom_id }}">
+                        <input type="hidden" name="car_id" value="{{ $car->id }}">
+                        <input type="hidden" name="amount" id="total-price-input">
+                        @if ($car->status == 'Disewakan')
+                            <input type="hidden" name="date" id="payment-page-date-input">
+                        @endif
+                        <input type="hidden" name="status" value="Pending">
+
                         <div class="mb-6 grid grid-cols-2 gap-4">
                             <div class="col-span-2 sm:col-span-1">
                                 <label for="full_name"
-                                    class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"> Full name (as
-                                    displayed on card)* </label>
-                                <input type="text" id="full_name"
+                                    class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+                                    Full name (as displayed on card)*
+                                </label>
+                                <input type="text" id="full_name" name="card_holder"
                                     class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                                    placeholder="Bonnie Green" required />
+                                    placeholder="Your Name" required />
                             </div>
 
                             <div class="col-span-2 sm:col-span-1">
                                 <label for="card-number-input"
-                                    class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"> Card number*
+                                    class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+                                    Card number*
                                 </label>
-                                <input type="text" id="card-number-input"
+                                <input type="text" id="card-number-input" name="card_number"
                                     class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 pe-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                                     placeholder="xxxx-xxxx-xxxx-xxxx" pattern="^4[0-9]{12}(?:[0-9]{3})?$" required />
                             </div>
 
                             <div>
                                 <label for="card-expiration-input"
-                                    class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">Card
-                                    expiration* </label>
+                                    class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+                                    Card expiration*
+                                </label>
                                 <div class="relative">
                                     <div
                                         class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3.5">
@@ -45,11 +87,12 @@
                                         </svg>
                                     </div>
                                     <input datepicker datepicker-format="mm/yy" id="card-expiration-input"
-                                        type="text"
+                                        name="card_expiry" type="text"
                                         class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 ps-9 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                                        placeholder="12/23" required />
+                                        placeholder="12/24" required />
                                 </div>
                             </div>
+
                             <div>
                                 <label for="cvv-input"
                                     class="mb-2 flex items-center gap-1 text-sm font-medium text-gray-900 dark:text-white">
@@ -69,47 +112,57 @@
                                         <div class="tooltip-arrow" data-popper-arrow></div>
                                     </div>
                                 </label>
-                                <input type="number" id="cvv-input" aria-describedby="helper-text-explanation"
+                                <input type="number" id="cvv-input" name="card_cvv"
                                     class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                                     placeholder="•••" required />
                             </div>
                         </div>
 
                         <button type="submit"
-                            class="flex w-full items-center justify-center rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4  focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Pay
-                            now</button>
+                            class="flex w-full items-center justify-center rounded-lg  bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4  focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            Pay now
+                        </button>
                     </form>
 
                     <div class="mt-6 grow sm:mt-8 lg:mt-0">
-                        <div
-                            class="space-y-4 rounded-lg border border-gray-100 bg-gray-50 p-6 dark:border-gray-700 dark:bg-gray-800">
+                        <div class="space-y-4 rounded-xl drop-shadow bg-blue-50 p-6 dark:bg-gray-800">
                             <div class="space-y-2">
                                 <dl class="flex items-center justify-between gap-4">
                                     <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Original price
                                     </dt>
-                                    <dd class="text-base font-medium text-gray-900 dark:text-white">$6,592.00</dd>
+                                    <dd id="original-price"
+                                        class="text-base font-medium text-gray-900 dark:text-white">
+                                        ${{ $car->price }}
+                                    </dd>
                                 </dl>
 
                                 <dl class="flex items-center justify-between gap-4">
                                     <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Savings</dt>
-                                    <dd class="text-base font-medium text-green-500">-$299.00</dd>
+                                    <dd id="savings" class="text-base font-medium text-green-500">
+                                        -$0.0
+                                    </dd>
                                 </dl>
 
                                 <dl class="flex items-center justify-between gap-4">
-                                    <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Store Pickup</dt>
-                                    <dd class="text-base font-medium text-gray-900 dark:text-white">$99</dd>
+                                    <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Pickup</dt>
+                                    <dd id="pickup-price" class="text-base font-medium text-gray-900 dark:text-white">
+                                        $0.00
+                                    </dd>
                                 </dl>
 
                                 <dl class="flex items-center justify-between gap-4">
                                     <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Tax</dt>
-                                    <dd class="text-base font-medium text-gray-900 dark:text-white">$799</dd>
+                                    <dd id="tax-price" class="text-base font-medium text-gray-900 dark:text-white">
+                                        $0.00
+                                    </dd>
                                 </dl>
                             </div>
-
                             <dl
-                                class="flex items-center justify-between gap-4 border-t border-gray-200 pt-2 dark:border-gray-700">
+                                class="flex items-center justify-between gap-4 border-t border-gray-300 pt-2 dark:border-gray-700">
                                 <dt class="text-base font-bold text-gray-900 dark:text-white">Total</dt>
-                                <dd class="text-base font-bold text-gray-900 dark:text-white">$7,191.00</dd>
+                                <dd id="total-price" class="text-base font-bold text-gray-900 dark:text-white">
+                                    $0.00
+                                </dd>
                             </dl>
                         </div>
 
@@ -135,42 +188,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="mt-12 py-5">
-                    <hr class="border border-gray-200 rounded" />
-                </div>
-                <footer class="p-2 bg-white dark:bg-gray-800">
-                    <div class="mx-auto max-w-screen-xl text-center">
-                        <p class="my-4 text-gray-500 dark:text-gray-400">
-                            Amfibi adalah platform online yang menyediakan layanan jual beli dan sewa mobil secara mudah
-                            dan aman.
-                        </p>
-                        <ul class="flex flex-wrap justify-center items-center mb-6 text-gray-900 dark:text-white">
-                            <li>
-                                <a href="#" class="mr-4 hover:underline md:mr-6 ">About</a>
-                            </li>
-                            <li>
-                                <a href="#" class="mr-4 hover:underline md:mr-6">Market</a>
-                            </li>
-                            <li>
-                                <a href="#" class="mr-4 hover:underline md:mr-6">Blog</a>
-                            </li>
-                            <li>
-                                <a href="#" class="mr-4 hover:underline md:mr-6">Support</a>
-                            </li>
-                            <li>
-                                <a href="#" class="mr-4 hover:underline md:mr-6">Download</a>
-                            </li>
-                            <li>
-                                <a href="#" class="mr-4 hover:underline md:mr-6">FAQs</a>
-                            </li>
-                            <li>
-                                <a href="#" class="mr-4 hover:underline md:mr-6">Contact</a>
-                            </li>
-                        </ul>
-                        <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2021-2022 <a
-                                href="#" class="hover:underline">Flowbite™</a>. All Rights Reserved.</span>
-                    </div>
-                </footer>
             </div>
         </div>
     </section>

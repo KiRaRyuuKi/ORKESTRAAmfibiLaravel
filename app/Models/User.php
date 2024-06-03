@@ -54,19 +54,14 @@ class User extends Authenticatable
         return $this->hasOne(Showroom::class);
     }
 
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+
     public function addresses()
     {
         return $this->hasMany(Address::class);
-    }
-
-    public function rentals()
-    {
-        return $this->hasMany(RentalCar::class);
-    }
-
-    public function sales()
-    {
-        return $this->hasMany(SaleCar::class);
     }
 
     public function conversations()

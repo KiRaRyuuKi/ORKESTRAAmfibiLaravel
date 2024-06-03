@@ -28,4 +28,9 @@ class Showroom extends Model
     {
         return $this->hasMany(Car::class);
     }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
 }

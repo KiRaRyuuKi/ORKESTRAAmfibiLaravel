@@ -1,6 +1,6 @@
 <x-app-layout>
-    <section class="bg-white dark:bg-gray-900">
-        <div class="py-5 px-6 mx-auto max-w-screen-xl">
+    <section class="bg-white p-5 rounded-xl dark:bg-gray-900">
+        <div class="p-6 mx-auto max-w-screen-xl">
             <h2 class="mb-10 text-3xl tracking-tight font-extrabold text-gray-900 dark:text-white">
                 How can we help you?
             </h2>
@@ -68,7 +68,7 @@
                         and we'll help you out as soon as we can.
                     </p>
                 </div>
-                <div class="-mb-9">
+                <div>
                     <h3 class="flex items-center mb-4 text-lg font-medium text-gray-900 dark:text-white">
                         <svg class="flex-shrink-0 mr-2 w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
                             viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
