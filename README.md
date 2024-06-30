@@ -3,6 +3,7 @@
 -   `composer install `
 -   `cp .env.example .env `
 -   `php artisan migrate --seed`
+-   `php artisan storage:link`
 -   `php artisan key:generate`
 -   `npm install && npm run dev`
 -   `or npm run build`
